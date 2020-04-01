@@ -30,17 +30,35 @@ namespace UserSignup.Controllers
             // Make sure the username is not blank.
             if (string.IsNullOrWhiteSpace(user.Username))
             {
-                user.Username = string.Empty; 
-                user.Password = string.Empty;  // blank out the password even if data was entered     
+                user.Username = string.Empty;
+                ViewBag.Password = user.Password; // keep the password as entered
                 ViewBag.Email = user.Email;  // keep the email address as entered
                 ViewBag.Error = "Username is required.";
+                return View(user);
+            }
+            // Make sure the username is between 5-15 characters
+            if (user.Username.Length <= 5 || user.Username.Length >= 15)
+            {
+                user.Username = string.Empty;
+                ViewBag.Password = user.Password; // keep the password as entered
+                ViewBag.Email = user.Email;  // keep the email address as entered
+                ViewBag.Error = "Username must be between 5 and 15 letter characters.";
+                return View(user);
+            }
+            // Make sure the username only contains letters 
+            if (user.Username.Any(char.IsDigit) || user.Username.Any(char.IsPunctuation))
+            {
+                user.Username = string.Empty;
+                ViewBag.Password = user.Password;// keep the password as entered
+                ViewBag.Email = user.Email;  // keep the email address as entered
+                ViewBag.Error = "Username may not contain numbers or special characters.";
                 return View(user);
             }
             // Make sure the email is not blank.
             if (string.IsNullOrWhiteSpace(user.Email))
             {
                 ViewBag.Username = user.Username; // keep the username as entered
-                user.Password = string.Empty; // blank out the password even if data was entered
+                ViewBag.Password = user.Password;
                 user.Email = string.Empty;
                 ViewBag.Error = "Email address is required.";
                 return View(user);
@@ -49,7 +67,7 @@ namespace UserSignup.Controllers
             if (IsValidEmail(user.Email) == false)
             {
                 ViewBag.Username = user.Username; // keep the username as entered
-                user.Password = string.Empty; // blank out the password even if data was entered
+                ViewBag.Password = user.Password; // keep the password as entered
                 user.Email = string.Empty;
                 ViewBag.Error = "Please enter a valid email address.";
                 return View(user);
