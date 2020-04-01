@@ -107,3 +107,4 @@ C:\LaunchCode\UserSignup\obj\Debug\netcoreapp3.1\UserSignup.csproj.CopyComplete
 C:\LaunchCode\UserSignup\obj\Debug\netcoreapp3.1\UserSignup.dll
 C:\LaunchCode\UserSignup\obj\Debug\netcoreapp3.1\UserSignup.pdb
 C:\LaunchCode\UserSignup\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
+C:\LaunchCode\UserSignup\obj\Debug\netcoreapp3.1\Razor\Views\User\Add.cshtml.g.cs
