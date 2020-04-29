@@ -1,30 +1,34 @@
-﻿@{
-    ViewData["Title"] = "Add User";
-}
+﻿@model UserSignup.ViewModels.AddUserViewModel
+
 
 <form method="Post">
-    <label for="Username">Username</label>
-    <input type="text" name="Username" value="@ViewBag.Username" />
-    <br />
+    <div class="form-group">
+        <label for="Username">Username</label>
+        <input type="text" name="UserName" value="@ViewBag.UserName" />
+        <span asp-validation-for="UserName"></span>
+    </div>
 
-    <label for="Email">Email</label>
-    <input type="text" name="Email" value="@ViewBag.Email" />
-    <br />
 
-    <label for="Password">Password</label>
-    <input type="password" name="Password" />
-    <br />
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="text" name="Email" value="@ViewBag.Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
 
-    <label for="Verify">Verify Password</label>
-    <input type="password" name="Verify" />
 
-    @if (!string.IsNullOrEmpty(ViewBag.Error))
-    {
-        <p>@ViewBag.Error</p>
-    }
-
-    <br />
-
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" name="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div class="form-group">
+        <label for="Verify">Verify Password</label>
+        <input type="password" name="Verify" />
+        <span asp-validation-for="VerifyPassword"></span>
+    </div>
+        
     <input type="submit" value="Add User" />
 </form>
+
+
 

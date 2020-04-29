@@ -7,17 +7,17 @@ namespace UserSignup.Models
 {
     public class UserData
     {
-        private static List<User> users = new List<User>();
+        public static List<User> users = new List<User>();
 
+        public static void Add(User user)
+        {
+            users.Add(user);
+        }
+        
         public static List<User> GetAll()
         {
             return users;
-        }
-
-        public static void Add(User newUser)
-        {
-            users.Add(newUser);
-        }
+        }        
 
         public static void Remove(int id)
         {
